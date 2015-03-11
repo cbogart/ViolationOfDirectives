@@ -66,14 +66,16 @@ public class HeadsUpNotificationFragment extends Fragment {
     }
 
     public HeadsUpNotificationFragment() {
+        // Moved reference to getActivity() to point before fragment is attached
+        // to activity, in violation of D_FRG_013
+        mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
+                .NOTIFICATION_SERVICE);
         // Required empty public constructor
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
-                .NOTIFICATION_SERVICE);
     }
 
     @Override
