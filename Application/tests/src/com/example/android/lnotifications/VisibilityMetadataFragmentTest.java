@@ -22,7 +22,11 @@ public class VisibilityMetadataFragmentTest extends
         mActivity = getActivity();
         // The second tab should be {@link VisibilityMetadataFragment}, that is tested in the
         // {@link LNotificationActivityTest}.
-        mActivity.getActionBar().setSelectedNavigationItem(1);
+        mActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                mActivity.getActionBar().setSelectedNavigationItem(1);
+            }
+        });
         getInstrumentation().waitForIdleSync();
         mFragment = (VisibilityMetadataFragment) mActivity.getFragmentManager()
                 .findFragmentById(R.id.container);

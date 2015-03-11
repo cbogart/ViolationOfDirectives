@@ -30,7 +30,11 @@ public class OtherMetadataFragmentTest extends
         mActivity = getActivity();
         // The third tab should be {@link OtherMetadataFragment}, that is tested in the
         // {@link LNotificationActivityTest}.
-        mActivity.getActionBar().setSelectedNavigationItem(2);
+        mActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                mActivity.getActionBar().setSelectedNavigationItem(2);
+            }
+        });
         getInstrumentation().waitForIdleSync();
         mFragment = (OtherMetadataFragment) mActivity.getFragmentManager()
                 .findFragmentById(R.id.container);

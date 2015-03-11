@@ -18,7 +18,8 @@
     package="com.example.android.lnotifications.tests"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:versionCode="1"
-    android:versionName="1.0">
+    android:versionName="1.0"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Min/target SDK versions (<uses-sdk>) managed by build.gradle -->
 
@@ -35,6 +36,7 @@
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
         android:label="Tests for L notifications sample"
+        tools:replace="android:label"
         android:targetPackage="com.example.android.lnotifications"/>
 
 </manifest>

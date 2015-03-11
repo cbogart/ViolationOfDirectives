@@ -27,21 +27,33 @@ public class LNotificationActivityTest extends
     }
 
     public void testFirstTabInActionBarIsHeadsUpNotificationFragment() {
-        mActivity.getActionBar().setSelectedNavigationItem(0);
+        mActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                mActivity.getActionBar().setSelectedNavigationItem(0);
+            }
+        });
         getInstrumentation().waitForIdleSync();
         Fragment fragment = mActivity.getFragmentManager().findFragmentById(R.id.container);
         assertTrue(fragment instanceof HeadsUpNotificationFragment);
     }
 
     public void testSecondtabInActionBarIsVisibilityMetadataFragment() {
-        mActivity.getActionBar().setSelectedNavigationItem(1);
+        mActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                mActivity.getActionBar().setSelectedNavigationItem(1);
+            }
+        });
         getInstrumentation().waitForIdleSync();
         Fragment fragment = mActivity.getFragmentManager().findFragmentById(R.id.container);
         assertTrue(fragment instanceof VisibilityMetadataFragment);
     }
 
     public void testThirdtabInActionBarIsOtherMetadataFragment() {
-        mActivity.getActionBar().setSelectedNavigationItem(2);
+        mActivity.runOnUiThread(new Runnable() {
+            public void run() {
+                mActivity.getActionBar().setSelectedNavigationItem(2);
+            }
+        });
         getInstrumentation().waitForIdleSync();
         Fragment fragment = mActivity.getFragmentManager().findFragmentById(R.id.container);
         assertTrue(fragment instanceof OtherMetadataFragment);
