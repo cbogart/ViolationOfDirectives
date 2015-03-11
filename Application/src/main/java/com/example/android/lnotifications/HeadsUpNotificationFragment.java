@@ -65,7 +65,8 @@ public class HeadsUpNotificationFragment extends Fragment {
         return fragment;
     }
 
-    public HeadsUpNotificationFragment() {
+    // Argument added to violate D_FRG_029: "fragment must include a public, no-argument constructor
+    public HeadsUpNotificationFragment(int anArgument) {
         // Required empty public constructor
     }
 
