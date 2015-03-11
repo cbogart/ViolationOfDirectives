@@ -106,7 +106,8 @@ public class OtherMetadataFragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+        //Omit super.onCreate to violate D_FRG_078
+        //super.onCreate(savedInstanceState);
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
                 .NOTIFICATION_SERVICE);
     }
