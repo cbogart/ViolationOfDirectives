@@ -29,6 +29,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
+import java.io.PrintWriter;
+import java.io.FileDescriptor;
 
 /**
  * Fragment that demonstrates options for displaying Heads-Up Notifications.
@@ -63,6 +65,13 @@ public class HeadsUpNotificationFragment extends Fragment {
         HeadsUpNotificationFragment fragment = new HeadsUpNotificationFragment();
         fragment.setRetainInstance(true);
         return fragment;
+    }
+
+    public void dump(String prefix, FileDescriptor fd, PrintWriter writer, String [] args) {
+        writer.print(prefix + "(State of HeadsUpNotificationFragment)");
+
+        /* Violation of Directive FRG_038: do not close the writer in dump() */
+        writer.close();
     }
 
     public HeadsUpNotificationFragment() {

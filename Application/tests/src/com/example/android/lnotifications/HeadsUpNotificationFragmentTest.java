@@ -2,6 +2,8 @@ package com.example.android.lnotifications;
 
 import android.app.Notification;
 import android.test.ActivityInstrumentationTestCase2;
+import java.io.StringWriter;
+import java.io.PrintWriter;
 
 /**
  * Unit tests for {@link HeadsUpNotificationFragment}.
@@ -26,6 +28,15 @@ public class HeadsUpNotificationFragmentTest extends
         getInstrumentation().waitForIdleSync();
         mFragment = (HeadsUpNotificationFragment) mActivity.getFragmentManager()
                 .findFragmentById(R.id.container);
+    }
+
+    public void testFragmentDump() {
+        StringWriter output = new StringWriter();
+        mActivity.getFragmentManager().dump("in TestFragmentDump: ", null,
+                new PrintWriter(output, true), null);
+        assertTrue(output.toString().contains("in TestFragmentDump:"));
+        assertTrue(output.toString().contains("(State of HeadsUpNotificationFragment)"));
+        assertTrue(output.toString().contains("FragmentManager misc state"));
     }
 
     public void testPreconditions() {
