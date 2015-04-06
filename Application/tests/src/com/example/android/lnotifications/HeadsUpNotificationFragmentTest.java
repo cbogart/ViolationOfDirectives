@@ -2,6 +2,9 @@ package com.example.android.lnotifications;
 
 import android.app.Notification;
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 
 /**
  * Unit tests for {@link HeadsUpNotificationFragment}.
@@ -44,6 +47,24 @@ public class HeadsUpNotificationFragmentTest extends
     public void testCreateNotification_verifyFullScreenIntentIsNull() {
         Notification notification = mFragment.createNotification(false);
         assertNull(notification.fullScreenIntent);
+    }
+
+    public void testMenuAddition(){
+
+        //select the correct menu button
+        Menu menu = mFragment.getMenu();
+        boolean foundTestItem = false;
+        assertTrue(menu!=null);
+        for(int i = 0; i < menu.size(); i++){
+            MenuItem mi = menu.getItem(i);
+            if(mi.getTitle().equals("Test Menu Action"))
+            {
+                foundTestItem = true;
+                break;
+            }
+        }
+        assertTrue(foundTestItem);
+
     }
 
     // If Mockito can be used, mock the NotificationManager and tests Notifications are actually

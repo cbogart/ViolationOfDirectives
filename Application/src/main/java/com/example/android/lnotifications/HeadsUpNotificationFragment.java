@@ -24,6 +24,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -41,6 +44,8 @@ public class HeadsUpNotificationFragment extends Fragment {
     private static final int NOTIFICATION_ID = 1;
 
     private NotificationManager mNotificationManager;
+
+    private Menu menu = null;
 
     /**
      * Button to show a notification.
@@ -70,10 +75,22 @@ public class HeadsUpNotificationFragment extends Fragment {
     }
 
     @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        MenuItem mi = menu.add("Test Menu Action");
+        super.onCreateOptionsMenu(menu, inflater);
+        this.menu = menu;
+    }
+
+    public Menu getMenu() {
+        return menu;
+    }
+
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
                 .NOTIFICATION_SERVICE);
+        //setHasOptionsMenu(true);
     }
 
     @Override
