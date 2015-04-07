@@ -90,6 +90,7 @@ public class HeadsUpNotificationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
                 .NOTIFICATION_SERVICE);
+        //avoid calling setHasOptionsMenu(true) to violate D_FRG_017
         //setHasOptionsMenu(true);
     }
 
