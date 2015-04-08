@@ -52,6 +52,22 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabOtherMetadata, 2);
     }
 
+    @Override
+    public void onResume(){
+        super.onResume();
+        // Create new fragment and transaction
+        Fragment newFragment = new SampleFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        //D_FRG_025 - directive says commit must be called last. Commit is called first here and
+        //the program crashes with an illegal state exception.
+        transaction.commit();
+        transaction.replace(R.id.container, newFragment);
+        transaction.addToBackStack(null);
+        //transaction.commit();
+
+    }
+
+
     /**
      * TabListener that replaces a Fragment when a tab is clicked.
      */
