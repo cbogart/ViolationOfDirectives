@@ -19,6 +19,7 @@ package com.example.android.lnotifications;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 
@@ -50,6 +51,21 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        NonUIFragment nf = new NonUIFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //This next line is a violation of directive D_FRG_021B.  The directive
+        //states that non ui fragments should be added using the add method
+        //commented out below.  Although nothing seems to happen if the
+        //fragment is added incorrectly.
+        fragmentTransaction.add(R.id.container, nf);
+        //fragmentTransaction.add(nf,"testBackgroundFragment");
+        fragmentTransaction.commit();
     }
 
     /**
