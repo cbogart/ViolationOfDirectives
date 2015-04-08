@@ -19,8 +19,12 @@ package com.example.android.lnotifications;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.widget.Toast;
+
+import java.lang.annotation.Documented;
 
 /**
  * Launcher Activity for the L Notification samples application.
@@ -50,6 +54,35 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
+
+        //adding the non-ui fragment
+        BackEndFragment bf = new BackEndFragment();
+        getFragmentManager().beginTransaction().add(bf, "nonUI").commit();  //NON UI Fragment
+
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // The activity has become visible (it is now "resumed").
+        //D_FRG_018 - fragment should not be able to be found by id
+        // if the fragment is not a ui fragment
+        Fragment f = getFragmentManager().findFragmentById(0);
+        if(f==null){
+            System.out.println("found fragment is null");
+        } else {
+            System.out.println("found fragment's class: " + f.getClass().toString());
+        }
+        f = getFragmentManager().findFragmentByTag("nonUI");
+        //f.getFragmentManager().
+        if(f==null){
+            System.out.println("found fragment is null");
+        } else {
+            System.out.println("found fragment's class: " + f.getClass().toString());
+        }
+
     }
 
     /**

@@ -74,7 +74,9 @@ public class HeadsUpNotificationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
                 .NOTIFICATION_SERVICE);
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -87,12 +89,15 @@ public class HeadsUpNotificationFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mShowNotificationButton = (Button) view.findViewById(R.id.show_notification_button);
+        final HeadsUpNotificationFragment h = this;
         mShowNotificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mNotificationManager.notify(NOTIFICATION_ID, createNotification(
                         mUseHeadsUpCheckbox.isChecked()));
                 Toast.makeText(getActivity(), "Show Notification clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "fragment id: "+Integer.toString(h.getId()), Toast.LENGTH_LONG).show();
+     ;
             }
         });
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
