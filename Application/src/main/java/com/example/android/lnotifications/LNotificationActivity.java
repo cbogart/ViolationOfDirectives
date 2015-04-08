@@ -19,6 +19,7 @@ package com.example.android.lnotifications;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 
@@ -50,6 +51,19 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        UIFragment fragment = new UIFragment();
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //D_FRG_021A - ui fragment should be added with the id of the container, as commented out below
+        //not added with the tag as in the uncommented line
+        //fragmentTransaction.add(R.id.container,fragment);
+        fragmentTransaction.add(fragment,"sampleFragment");
+        fragmentTransaction.commit();
     }
 
     /**
