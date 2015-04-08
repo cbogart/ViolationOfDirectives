@@ -19,6 +19,7 @@ package com.example.android.lnotifications;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 
@@ -50,6 +51,26 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        FragmentManager fragmentManager = getFragmentManager();
+        NonUIFragment1 f1 = new NonUIFragment1();
+        NonUIFragment2 f2 = new NonUIFragment2();
+        System.out.println("adding non-ui fragments");
+        //This section adds two fragments with the same tag, which violates
+        //directive D_FRG_022
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(f1,"testTag");
+        fragmentTransaction.commit();
+        System.out.println("added non-ui fragment 1");
+        fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(f2,"testTag");
+        fragmentTransaction.commit();
+        System.out.println("added non-ui fragment 2");
+
     }
 
     /**

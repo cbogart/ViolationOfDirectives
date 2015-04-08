@@ -58,4 +58,9 @@ public class LNotificationActivityTest extends
         Fragment fragment = mActivity.getFragmentManager().findFragmentById(R.id.container);
         assertTrue(fragment instanceof OtherMetadataFragment);
     }
+
+    public void testSameFragmentTags(){
+        Fragment f = mActivity.getFragmentManager().findFragmentByTag("testTag");
+        assertTrue(f instanceof NonUIFragment1);
+    }
 }
