@@ -3,6 +3,7 @@ package com.example.android.lnotifications;
 import android.app.Fragment;
 import android.app.Notification;
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
 
 /**
  * Unit tests for {@link BackEndFragment}.
@@ -29,17 +30,17 @@ public class BackEndFragmentTest extends
     public void testGetFragmentByID(){
         Fragment f = mActivity.getFragmentManager().findFragmentById(0);
         if(f==null){
-            System.out.println("found fragment is null");
+            Log.w("testGetFragmentByID", "found fragment is null");
         } else {
-            System.out.println("found fragment's class: " + f.getClass().toString());
+            Log.w("testGetFragmentByID","found fragment's class: " + f.getClass().toString());
         }
         assertTrue(f==null);
         f = mActivity.getFragmentManager().findFragmentByTag("nonUI");
         //f.getFragmentManager().
         if(f==null){
-            System.out.println("found fragment is null");
+            Log.w("testGetFragmentByID","found fragment is null");
         } else {
-            System.out.println("found fragment's class: " + f.getClass().toString());
+            Log.w("testGetFragmentByID","found fragment's class: " + f.getClass().toString());
         }
         assertTrue(f.getClass().equals(BackEndFragment.class));
 

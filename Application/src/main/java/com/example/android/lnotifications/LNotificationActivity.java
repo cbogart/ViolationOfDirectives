@@ -58,6 +58,8 @@ public class LNotificationActivity extends Activity {
         //adding the non-ui fragment
         BackEndFragment bf = new BackEndFragment();
         getFragmentManager().beginTransaction().add(bf, "nonUI").commit();  //NON UI Fragment
+        BackEndFragment2 bf2 = new BackEndFragment2();
+        getFragmentManager().beginTransaction().add(bf2, "nonUI2").commit();  //NON UI Fragment
 
     }
 
