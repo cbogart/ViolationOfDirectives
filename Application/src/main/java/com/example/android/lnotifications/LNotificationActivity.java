@@ -51,6 +51,8 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
         Fragment newFragment = new AddedFragment();
+        //D_FRG_027 - attempted to perform fragment transaction when the activity is not in
+        //a resumed state
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
 // Replace whatever is in the fragment_container view with this fragment,
