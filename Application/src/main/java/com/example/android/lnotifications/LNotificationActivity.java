@@ -52,6 +52,19 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabOtherMetadata, 2);
     }
 
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Fragment f = getFragmentManager().findFragmentByTag("title");
+        if(f!=null) {
+            System.out.println("Class of fragment: " + f.getClass().toString());
+        }
+        else{
+            System.out.println("Heads up fragment is null");
+        }
+    }
+
     /**
      * TabListener that replaces a Fragment when a tab is clicked.
      */
