@@ -53,6 +53,8 @@ public class HeadsUpNotificationFragment extends Fragment {
      */
     private CheckBox mUseHeadsUpCheckbox;
 
+    private int numberOfButtonsToAddToLayout = 1;
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -67,6 +69,13 @@ public class HeadsUpNotificationFragment extends Fragment {
 
     public HeadsUpNotificationFragment() {
         // Required empty public constructor
+    }
+
+    //attempt to violate D_FRG_033
+    //AndriodStudio doesn't even let this compile and instead recommends
+    //using the default constructor along with Fragment#seArguments(Bundle)
+    public HeadsUpNotificationFragment(int numberOfButtonsToAddToLayout) {
+       this.numberOfButtonsToAddToLayout = numberOfButtonsToAddToLayout;
     }
 
     @Override
