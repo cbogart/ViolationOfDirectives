@@ -131,4 +131,9 @@ public class HeadsUpNotificationFragment extends Fragment {
         }
         return notificationBuilder.build();
     }
+
+    @Override
+    public int hashCode(){
+
+    }
 }
