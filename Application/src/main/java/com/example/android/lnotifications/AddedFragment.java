@@ -46,7 +46,7 @@ public class AddedFragment extends Fragment {
         //not sure how to make a test for this because we need this statement to
         //occur at a specific time in the app initializaion, not after the
         //app has already been initialized.
-        //D_FRG_037 - testing that fragment is not attached to activity yet
+        //D_FRG_037 - testing that fragment is not attached to activity yetgt
         if(!this.isAdded()){
 
             throw new RuntimeException("the fragment was not attached to the activity in onInflate");
