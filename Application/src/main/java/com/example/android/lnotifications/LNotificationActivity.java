@@ -30,9 +30,9 @@ public class LNotificationActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+
         setTitle(R.string.title_lnotification_activity);
-        ActionBar actionBar = getActionBar();
+       /* ActionBar actionBar = getActionBar();
 
         // Use ViewPager in the support library where possible.
         // At this time, the support library for L is not ready so using the deprecated method
@@ -49,7 +49,20 @@ public class LNotificationActivity extends Activity {
                 ()));
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
-        actionBar.addTab(tabOtherMetadata, 2);
+        actionBar.addTab(tabOtherMetadata, 2);*/
+
+        setContentView(R.layout.activity_notification);
+
+        if (savedInstanceState == null) {
+            // First-time init; create fragment to embed in activity.
+
+            System.out.println("Adding the new fragment^^^^^^^^^");
+            FragmentTransaction ft = getFragmentManager().beginTransaction();
+            Fragment newFragment = AddedFragment.newInstance("From Arguments");
+            ft.replace(R.id.container, newFragment);
+            ft.commit();
+        }
+
     }
 
     /**
