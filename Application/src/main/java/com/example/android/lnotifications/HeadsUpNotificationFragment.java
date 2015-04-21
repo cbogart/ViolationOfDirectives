@@ -132,6 +132,8 @@ public class HeadsUpNotificationFragment extends Fragment {
         return notificationBuilder.build();
     }
 
+    //D_FRG_040 - don't override hashCode
+    //Code does not compile because compiler prevents overriding hashCode
     @Override
     public int hashCode(){
 
