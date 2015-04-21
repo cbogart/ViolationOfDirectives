@@ -133,7 +133,7 @@ public class HeadsUpNotificationFragment extends Fragment {
     }
 
     //attempt to override the Fragment#equals(Object o) method
-    //D_FRG_038- Don't override equals in class that extends Fragment
+    //D_FRG_039- Don't override equals in class that extends Fragment
     @Override
     public boolean equals(Object o){
         return true;
