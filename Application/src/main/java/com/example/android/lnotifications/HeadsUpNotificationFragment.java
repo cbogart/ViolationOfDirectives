@@ -23,7 +23,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -74,6 +77,7 @@ public class HeadsUpNotificationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
                 .NOTIFICATION_SERVICE);
+
     }
 
     @Override
@@ -96,6 +100,7 @@ public class HeadsUpNotificationFragment extends Fragment {
             }
         });
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
+
     }
 
     /**
@@ -131,4 +136,15 @@ public class HeadsUpNotificationFragment extends Fragment {
         }
         return notificationBuilder.build();
     }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item){
+        //super.onContextItemSelected(item);
+        System.out.println("context item was selected (HeadsUpNotification)!!!!!");
+        return false;
+    }
+
+
+
+
 }

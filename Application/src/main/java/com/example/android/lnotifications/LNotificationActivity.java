@@ -41,7 +41,7 @@ public class LNotificationActivity extends Activity {
         ActionBar.Tab tabHeadsUpNotification = actionBar.newTab().setText("Heads Up");
         ActionBar.Tab tabVisibilityMetadata = actionBar.newTab().setText("Visibility");
         ActionBar.Tab tabOtherMetadata = actionBar.newTab().setText("Others");
-        tabHeadsUpNotification.setTabListener(new FragmentTabListener(HeadsUpNotificationFragment
+        tabHeadsUpNotification.setTabListener(new FragmentTabListener(AddedFragment
                 .newInstance()));
         tabVisibilityMetadata.setTabListener(new FragmentTabListener(VisibilityMetadataFragment
                 .newInstance()));
