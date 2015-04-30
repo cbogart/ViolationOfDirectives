@@ -23,7 +23,10 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -52,6 +55,8 @@ public class HeadsUpNotificationFragment extends Fragment {
      * Notifications.
      */
     private CheckBox mUseHeadsUpCheckbox;
+
+    private ContextMenu cm = null;
 
     /**
      * Use this factory method to create a new instance of
@@ -96,6 +101,7 @@ public class HeadsUpNotificationFragment extends Fragment {
             }
         });
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
+        registerForContextMenu(view);
     }
 
     /**
@@ -130,5 +136,27 @@ public class HeadsUpNotificationFragment extends Fragment {
                     .setFullScreenIntent(fullScreenPendingIntent, true);
         }
         return notificationBuilder.build();
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v,
+                                    ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
+        menu.setHeaderTitle("Original context menu title");
+        cm = menu;
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+
+        //D_FRG_049 - using the context menu provided in onCreateContextMenu after the
+        // method returns is considered unsafe
+        cm.setHeaderTitle("New Title added later");
+        System.out.println("And item was selected%%%%%%%%%%");
+       return true;
+
+
     }
 }
