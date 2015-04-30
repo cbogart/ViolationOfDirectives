@@ -24,6 +24,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -52,6 +54,9 @@ public class HeadsUpNotificationFragment extends Fragment {
      * Notifications.
      */
     private CheckBox mUseHeadsUpCheckbox;
+
+
+    private int itemsToAdd = 1;
 
     /**
      * Use this factory method to create a new instance of
@@ -96,6 +101,7 @@ public class HeadsUpNotificationFragment extends Fragment {
             }
         });
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
+        setHasOptionsMenu(true);
     }
 
     /**
@@ -131,4 +137,23 @@ public class HeadsUpNotificationFragment extends Fragment {
         }
         return notificationBuilder.build();
     }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater){
+            MenuInflater inflater = getActivity().getMenuInflater();
+            inflater.inflate(R.menu.context_menu, menu);
+        menu.add("new option");
+    }
+
+
+    @Override
+    public void onPrepareOptionsMenu(Menu menu){
+        for(int i = 0; i < itemsToAdd; i++){
+            //D_FRG_050 - menu items should only be added in the create options menu
+            menu.add("added item - "+i);
+        }
+        itemsToAdd+=1;
+
+    }
+
 }
