@@ -24,6 +24,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -96,6 +98,8 @@ public class HeadsUpNotificationFragment extends Fragment {
             }
         });
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
+        //D_FRG_068 - must call setHasOptionsMenu(true) if you override onCreateOptionsMenu
+        //setHasOptionsMenu(true);
     }
 
     /**
@@ -130,5 +134,10 @@ public class HeadsUpNotificationFragment extends Fragment {
                     .setFullScreenIntent(fullScreenPendingIntent, true);
         }
         return notificationBuilder.build();
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater) {
+        menuInflater.inflate(R.menu.context_menu, menu);
     }
 }
