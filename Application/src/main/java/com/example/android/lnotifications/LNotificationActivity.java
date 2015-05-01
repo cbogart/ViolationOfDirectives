@@ -19,13 +19,19 @@ package com.example.android.lnotifications;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 
 /**
  * Launcher Activity for the L Notification samples application.
  */
 public class LNotificationActivity extends Activity {
+
+    private HeadsUpNotificationFragment hFrag = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +47,8 @@ public class LNotificationActivity extends Activity {
         ActionBar.Tab tabHeadsUpNotification = actionBar.newTab().setText("Heads Up");
         ActionBar.Tab tabVisibilityMetadata = actionBar.newTab().setText("Visibility");
         ActionBar.Tab tabOtherMetadata = actionBar.newTab().setText("Others");
-        tabHeadsUpNotification.setTabListener(new FragmentTabListener(HeadsUpNotificationFragment
-                .newInstance()));
+        hFrag = HeadsUpNotificationFragment.newInstance().newInstance();
+        tabHeadsUpNotification.setTabListener(new FragmentTabListener(hFrag));
         tabVisibilityMetadata.setTabListener(new FragmentTabListener(VisibilityMetadataFragment
                 .newInstance()));
         tabOtherMetadata.setTabListener(new FragmentTabListener(OtherMetadataFragment.newInstance
@@ -50,6 +56,20 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.context_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        FragmentManager manager = hFrag.getFragmentManager();
+        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+        fragmentTransaction.remove(hFrag).commit();
+        return true;
     }
 
     /**

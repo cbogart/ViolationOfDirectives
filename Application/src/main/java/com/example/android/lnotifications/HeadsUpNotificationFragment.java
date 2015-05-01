@@ -17,6 +17,8 @@
 package com.example.android.lnotifications;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -24,8 +26,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
@@ -41,6 +47,8 @@ public class HeadsUpNotificationFragment extends Fragment {
     private static final int NOTIFICATION_ID = 1;
 
     private NotificationManager mNotificationManager;
+
+    public boolean calledOnDestroy = false;
 
     /**
      * Button to show a notification.
@@ -81,6 +89,7 @@ public class HeadsUpNotificationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_heads_up_notification, container, false);
+
     }
 
     @Override
@@ -96,6 +105,7 @@ public class HeadsUpNotificationFragment extends Fragment {
             }
         });
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
+        setHasOptionsMenu(true);
     }
 
     /**
@@ -130,5 +140,20 @@ public class HeadsUpNotificationFragment extends Fragment {
                     .setFullScreenIntent(fullScreenPendingIntent, true);
         }
         return notificationBuilder.build();
+    }
+
+
+
+
+    //D_FRG_052 - Fragment must override onDestroyView
+    /*@Override
+    public void onDestroyView(){
+      System.out.println("Destroying View!!!!!!!!!!!!");
+        super.onDestroyView();
+        calledOnDestroy = true;
+    }*/
+
+    public boolean getCalledOnDestory(){
+        return calledOnDestroy;
     }
 }
