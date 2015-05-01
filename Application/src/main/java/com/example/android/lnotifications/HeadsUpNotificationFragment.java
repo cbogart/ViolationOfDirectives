@@ -90,9 +90,17 @@ public class HeadsUpNotificationFragment extends Fragment {
         mShowNotificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mNotificationManager.notify(NOTIFICATION_ID, createNotification(
-                        mUseHeadsUpCheckbox.isChecked()));
+
                 Toast.makeText(getActivity(), "Show Notification clicked", Toast.LENGTH_SHORT).show();
+                assert(getActivity()!=null);
+                Bundle args = new Bundle();
+                args.putInt("index", 1);
+                //D_FRG_063 - setArguments can only be called before the fragment is attached to
+                //an activity
+                setArguments(args);
+                System.out.println("Called set arguments#########");
+                assert(((int)getArguments().get("index"))==1);
+
             }
         });
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
@@ -129,6 +137,9 @@ public class HeadsUpNotificationFragment extends Fragment {
                     .setContentText("Heads-Up Notification on Android L or above.")
                     .setFullScreenIntent(fullScreenPendingIntent, true);
         }
+
         return notificationBuilder.build();
     }
+
+
 }
