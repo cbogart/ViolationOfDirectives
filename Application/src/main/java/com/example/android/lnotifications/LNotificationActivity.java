@@ -41,15 +41,42 @@ public class LNotificationActivity extends Activity {
         ActionBar.Tab tabHeadsUpNotification = actionBar.newTab().setText("Heads Up");
         ActionBar.Tab tabVisibilityMetadata = actionBar.newTab().setText("Visibility");
         ActionBar.Tab tabOtherMetadata = actionBar.newTab().setText("Others");
-        tabHeadsUpNotification.setTabListener(new FragmentTabListener(HeadsUpNotificationFragment
-                .newInstance()));
-        tabVisibilityMetadata.setTabListener(new FragmentTabListener(VisibilityMetadataFragment
-                .newInstance()));
+        HeadsUpNotificationFragment hFrag = HeadsUpNotificationFragment.newInstance().newInstance();
+        tabHeadsUpNotification.setTabListener(new FragmentTabListener(hFrag));
+        VisibilityMetadataFragment vFrag = VisibilityMetadataFragment.newInstance();
+        tabVisibilityMetadata.setTabListener(new FragmentTabListener(vFrag));
         tabOtherMetadata.setTabListener(new FragmentTabListener(OtherMetadataFragment.newInstance
                 ()));
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
+
+        // First transaction with action other than add, replace, or remove
+        Fragment newFragment = new AddedFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+        transaction.detach(hFrag);
+        transaction.replace(R.id.container, newFragment);
+
+        //D_FRG_023 - performed something that wasn't add, replace, or remove before commit
+        transaction.attach(hFrag);
+        transaction.addToBackStack(null);
+// Commit the transaction
+        transaction.commit();
+
+        // Create new transaction without commit
+        FragmentTransaction transaction2 = getFragmentManager().beginTransaction();
+
+        //D_FRG_023 - perform commit before change
+        transaction2.commit();
+        transaction2.replace(R.id.container, vFrag);
+
+
+        transaction2.addToBackStack(null);
+
+// Commit the transaction
+        //transaction2.commit();
+
     }
 
     /**
