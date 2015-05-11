@@ -74,6 +74,9 @@ public class HeadsUpNotificationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
                 .NOTIFICATION_SERVICE);
+        //D_FRG_046 - tried to use the fragment view in onCreate.  getView returns null which causes
+        //a runtime exception
+        mShowNotificationButton = (Button) this.getView().findViewById(R.id.show_notification_button);
     }
 
     @Override
@@ -96,6 +99,7 @@ public class HeadsUpNotificationFragment extends Fragment {
             }
         });
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
+        //mUseHeadsUpCheckbox = (CheckBox) this.getView().findViewById(R.id.use_heads_up_checkbox);
     }
 
     /**
