@@ -22,7 +22,16 @@
 
     <style name="Theme.Sample" parent="Theme.Base" />
 
-    <style name="AppTheme" parent="Theme.Sample" />
+
+
+    <!---  This works: <item name="android:fragmentAllowEnterTransitionOverlap">@style/Theme.Sample</item> -->
+    <style name="AppTheme" parent="Theme.Sample">
+
+        <!---  D_FRG_032 - android:fragementAllowEnterTransitionOverlap must a reference to a theme or a resource
+        in the correct format, this directive was violated by using a color literal.  An compilable example is
+        included in the comment above-->
+        <item name="android:fragmentAllowEnterTransitionOverlap">#7F000000</item>
+    </style>
     <!-- Widget styling -->
 
     <style name="Widget" />
