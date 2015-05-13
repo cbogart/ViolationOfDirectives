@@ -16,13 +16,16 @@
 
 package com.example.android.lnotifications;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -53,6 +56,9 @@ public class HeadsUpNotificationFragment extends Fragment {
      */
     private CheckBox mUseHeadsUpCheckbox;
 
+
+    private CharSequence mLabel = "Didn't Change";
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -74,10 +80,25 @@ public class HeadsUpNotificationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
                 .NOTIFICATION_SERVICE);
-        //D_FRG_046 - tried to use the fragment view in onCreate.  getView returns null which causes
-        //a runtime exception
-        mShowNotificationButton = (Button) this.getView().findViewById(R.id.show_notification_button);
     }
+
+
+    /**
+     * Parse attributes during inflation from a view hierarchy into the
+     * arguments we handle.
+     *
+    @Override public void onInflate(Activity activity, AttributeSet attrs,
+                                    Bundle savedInstanceState) {
+        System.out.println("###in onInflate###");
+        super.onInflate(activity, attrs, savedInstanceState);
+
+        TypedArray a = activity.obtainStyledAttributes(attrs,
+                R.styleable.HeadsUpNotificationFragment);
+        mLabel = a.getText(R.styleable.HeadsUpNotificationFragment_android_label);
+        a.recycle();
+        System.out.println("$$$$Called on inflate$$$$");
+    }
+     */
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -95,11 +116,10 @@ public class HeadsUpNotificationFragment extends Fragment {
             public void onClick(View view) {
                 mNotificationManager.notify(NOTIFICATION_ID, createNotification(
                         mUseHeadsUpCheckbox.isChecked()));
-                Toast.makeText(getActivity(), "Show Notification clicked", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), mLabel, Toast.LENGTH_SHORT).show();
             }
         });
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
-        //mUseHeadsUpCheckbox = (CheckBox) this.getView().findViewById(R.id.use_heads_up_checkbox);
     }
 
     /**
