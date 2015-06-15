@@ -114,9 +114,10 @@ public class OtherMetadataFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        // Change false to true to violate F_DRG_012
-        return inflater.inflate(R.layout.fragment_other_metadata, container, true);
+        Log.d("DEBUG", "Other Created");
+        View v = inflater.inflate(R.layout.fragment_other_metadata, container);
+
+        return v;
     }
 
     @Override
