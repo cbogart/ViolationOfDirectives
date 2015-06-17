@@ -23,6 +23,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -74,13 +75,6 @@ public class HeadsUpNotificationFragment extends Fragment {
         // Required empty public constructor
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        MenuItem mi = menu.add("Test Menu Action");
-        super.onCreateOptionsMenu(menu, inflater);
-        this.menu = menu;
-    }
-
     public Menu getMenu() {
         return menu;
     }
@@ -90,14 +84,22 @@ public class HeadsUpNotificationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
                 .NOTIFICATION_SERVICE);
-        //setHasOptionsMenu(true);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_heads_up_notification, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_heads_up_notification, container, false);
+        setHasOptionsMenu(true);
+        return rootView;
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.call_planning, menu);
     }
 
     @Override
