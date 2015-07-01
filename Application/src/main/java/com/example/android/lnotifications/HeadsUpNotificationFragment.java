@@ -16,6 +16,7 @@
 
 package com.example.android.lnotifications;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -34,6 +35,11 @@ import android.widget.Toast;
  * Fragment that demonstrates options for displaying Heads-Up Notifications.
  */
 public class HeadsUpNotificationFragment extends Fragment {
+
+    /**
+     * The fragment's parent activity.
+     */
+    private Activity mActivity;
 
     /**
      * NotificationId used for the notifications from this Fragment.
@@ -59,14 +65,14 @@ public class HeadsUpNotificationFragment extends Fragment {
      *
      * @return A new instance of fragment NotificationFragment.
      */
-    public static HeadsUpNotificationFragment newInstance() {
-        HeadsUpNotificationFragment fragment = new HeadsUpNotificationFragment();
+    public static HeadsUpNotificationFragment newInstance(Activity act) {
+        HeadsUpNotificationFragment fragment = new HeadsUpNotificationFragment(act);
         fragment.setRetainInstance(true);
         return fragment;
     }
 
-    public HeadsUpNotificationFragment() {
-        // Required empty public constructor
+    public HeadsUpNotificationFragment(Activity act) {
+        mActivity = act;
     }
 
     @Override

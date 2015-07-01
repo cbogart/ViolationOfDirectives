@@ -50,6 +50,11 @@ import java.util.Random;
  */
 public class OtherMetadataFragment extends Fragment {
 
+    /**
+     * The fragment's parent activity.
+     */
+    private Activity mActivity;
+
     private static final String TAG = OtherMetadataFragment.class.getSimpleName();
 
     /**
@@ -94,14 +99,14 @@ public class OtherMetadataFragment extends Fragment {
      *
      * @return A new instance of fragment NotificationFragment.
      */
-    public static OtherMetadataFragment newInstance() {
-        OtherMetadataFragment fragment = new OtherMetadataFragment();
+    public static OtherMetadataFragment newInstance(Activity act) {
+        OtherMetadataFragment fragment = new OtherMetadataFragment(act);
         fragment.setRetainInstance(true);
         return fragment;
     }
 
-    public OtherMetadataFragment() {
-        // Required empty public constructor
+    public OtherMetadataFragment(Activity act) {
+        mActivity = act;
     }
 
     @Override

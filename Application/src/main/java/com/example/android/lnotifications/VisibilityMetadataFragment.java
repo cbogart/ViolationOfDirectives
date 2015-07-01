@@ -16,6 +16,7 @@
 
 package com.example.android.lnotifications;
 
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -36,6 +37,11 @@ import java.util.Random;
  * a lockscreen.
  */
 public class VisibilityMetadataFragment extends Fragment {
+
+    /**
+     * The fragment's parent activity.
+     */
+    private Activity mActivity;
 
     private NotificationManager mNotificationManager;
 
@@ -61,14 +67,14 @@ public class VisibilityMetadataFragment extends Fragment {
      *
      * @return A new instance of fragment NotificationFragment.
      */
-    public static VisibilityMetadataFragment newInstance() {
-        VisibilityMetadataFragment fragment = new VisibilityMetadataFragment();
+    public static VisibilityMetadataFragment newInstance(Activity act) {
+        VisibilityMetadataFragment fragment = new VisibilityMetadataFragment(act);
         fragment.setRetainInstance(true);
         return fragment;
     }
 
-    public VisibilityMetadataFragment() {
-        // Required empty public constructor
+    public VisibilityMetadataFragment(Activity act) {
+        mActivity = act;
     }
 
     @Override

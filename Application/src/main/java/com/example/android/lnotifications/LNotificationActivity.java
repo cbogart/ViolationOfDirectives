@@ -42,11 +42,11 @@ public class LNotificationActivity extends Activity {
         ActionBar.Tab tabVisibilityMetadata = actionBar.newTab().setText("Visibility");
         ActionBar.Tab tabOtherMetadata = actionBar.newTab().setText("Others");
         tabHeadsUpNotification.setTabListener(new FragmentTabListener(HeadsUpNotificationFragment
-                .newInstance()));
+                .newInstance(this)));
         tabVisibilityMetadata.setTabListener(new FragmentTabListener(VisibilityMetadataFragment
-                .newInstance()));
+                .newInstance(this)));
         tabOtherMetadata.setTabListener(new FragmentTabListener(OtherMetadataFragment.newInstance
-                ()));
+                (this)));
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
