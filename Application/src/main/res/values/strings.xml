@@ -1,22 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
-Copyright 2014 The Android Open Source Project
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
- http://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
--->
-
 <resources>
     <string name="action_settings">Settings</string>
+    <string name="change_color_description">This fragment changes the color of the button in the second tab to green when it is clicked.\n</string>
     <string name="heads_up_notification_description">This sample demonstrates options for displaying Heads-Up Notifications on Android.
         \n\n
     On Android L or above, you have options to display important information in front of the user (Heads-Up Notifications) which
@@ -37,6 +21,7 @@ limitations under the License.
     <string name="attach_person">Attach Person</string>
     <string name="click_to_change">Click to Change</string>
     <string name="show_notification">Show notification</string>
+    <string name="change_color_button_text">Change colors!</string>
     <string name="use_heads_up_notification_where_possible">Use Heads Up Notification when possible</string>
     <string name="label_category">Category</string>
     <string name="label_priority">Priority</string>

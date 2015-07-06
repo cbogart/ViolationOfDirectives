@@ -27,6 +27,8 @@ import android.os.Bundle;
  */
 public class LNotificationActivity extends Activity {
 
+    private HeadsUpNotificationFragment headsUpNotificationFragment;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,28 +40,42 @@ public class LNotificationActivity extends Activity {
         // At this time, the support library for L is not ready so using the deprecated method
         // to create tabs.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        ActionBar.Tab changeColorNotification = actionBar.newTab().setText("Change Color");
         ActionBar.Tab tabHeadsUpNotification = actionBar.newTab().setText("Heads Up");
         ActionBar.Tab tabVisibilityMetadata = actionBar.newTab().setText("Visibility");
         ActionBar.Tab tabOtherMetadata = actionBar.newTab().setText("Others");
-        tabHeadsUpNotification.setTabListener(new FragmentTabListener(HeadsUpNotificationFragment
-                .newInstance()));
-        tabVisibilityMetadata.setTabListener(new FragmentTabListener(VisibilityMetadataFragment
-                .newInstance()));
-        tabOtherMetadata.setTabListener(new FragmentTabListener(OtherMetadataFragment.newInstance
-                ()));
-        actionBar.addTab(tabHeadsUpNotification, 0);
-        actionBar.addTab(tabVisibilityMetadata, 1);
-        actionBar.addTab(tabOtherMetadata, 2);
+        changeColorNotification.setTabListener(new FragmentTabListener(this,ChangeColorFragment
+                .newInstance(), "visibility"));
+        headsUpNotificationFragment = HeadsUpNotificationFragment.newInstance();
+
+        tabHeadsUpNotification.setTabListener(new FragmentTabListener(this,headsUpNotificationFragment,
+                "heads up"));
+        tabVisibilityMetadata.setTabListener(new FragmentTabListener(this,VisibilityMetadataFragment
+                .newInstance(), "visibility"));
+        tabOtherMetadata.setTabListener(new FragmentTabListener(this,OtherMetadataFragment.newInstance
+                (),"others"));
+        actionBar.addTab(changeColorNotification, 0);
+        actionBar.addTab(tabHeadsUpNotification, 1);
+        actionBar.addTab(tabVisibilityMetadata, 2);
+        actionBar.addTab(tabOtherMetadata, 3);
+    }
+
+    public HeadsUpNotificationFragment getHeadsUpNotificationFragment(){
+        return headsUpNotificationFragment;
     }
 
     /**
      * TabListener that replaces a Fragment when a tab is clicked.
      */
     private static class FragmentTabListener implements ActionBar.TabListener {
+        public Activity activity;
         public Fragment fragment;
+        public String tag;
 
-        public FragmentTabListener(Fragment fragment) {
+        public FragmentTabListener(Activity activity, Fragment fragment, String tag) {
+            this.activity = activity;
             this.fragment = fragment;
+            this.tag = tag;
         }
 
         @Override
@@ -69,12 +85,36 @@ public class LNotificationActivity extends Activity {
 
         @Override
         public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-            ft.replace(R.id.container, fragment);
+            //ft.replace(R.id.container, fragment);
+            if (fragment == null) {
+
+                fragment = Fragment.instantiate(activity, fragment.getClass().getName());
+
+                ft.add(R.id.container, fragment, tag);
+                System.out.println("adding fragment");
+
+            } else {
+                //ft.attach(fragment);
+                //ft.replace(R.id.container,fragment);
+                System.out.println("attaching fragment");
+                if(fragment.getView()==null) {
+                    ft.add(R.id.container, fragment, tag);
+                }
+                else {
+                    ft.show(fragment);
+                    if(fragment instanceof HeadsUpNotificationFragment){
+                        ((HeadsUpNotificationFragment)fragment).updateButton();
+                    }
+
+                }
+            }
         }
 
         @Override
         public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-            ft.remove(fragment);
+            //ft.remove(fragment);
+            //ft.detach(fragment);
+            ft.hide(fragment);
         }
     }
 }

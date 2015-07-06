@@ -32,9 +32,14 @@ import android.widget.CheckBox;
 import android.widget.Toast;
 
 /**
- * Fragment that demonstrates options for displaying Heads-Up Notifications.
+ * This fragment changes the color of the HeadsUpNotification Tab Button.  If the
+ * button is pressed in this fragment before accessing HeadsUpFragment, then the
+ * HeadsUpFragment button will be green.  If HeadsUpFragments is clicked first, then
+ * the button will start out gray.  If the user then transitions back to this
+ * fragment and clicks the change color button, the application will crash.
+ * Fix this bug!
  */
-public class HeadsUpNotificationFragment extends Fragment {
+public class ChangeColorFragment extends Fragment {
 
     /**
      * NotificationId used for the notifications from this Fragment.
@@ -54,21 +59,22 @@ public class HeadsUpNotificationFragment extends Fragment {
      */
     private CheckBox mUseHeadsUpCheckbox;
 
+    private int buttonColor = 0;
+
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
      * @return A new instance of fragment NotificationFragment.
      */
-    public static HeadsUpNotificationFragment newInstance() {
-        HeadsUpNotificationFragment fragment = new HeadsUpNotificationFragment();
+    public static ChangeColorFragment newInstance() {
+        ChangeColorFragment fragment = new ChangeColorFragment();
         fragment.setRetainInstance(true);
         return fragment;
     }
 
-    public HeadsUpNotificationFragment() {
-        //remove this later
-        setArguments(new Bundle());
+    public ChangeColorFragment() {
         // Required empty public constructor
     }
 
@@ -83,30 +89,24 @@ public class HeadsUpNotificationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-        return inflater.inflate(R.layout.fragment_heads_up_notification, container, false);
-
+        System.out.println("Inflating change color fragment");
+        return inflater.inflate(R.layout.fragment_change_color, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        mShowNotificationButton = (Button) view.findViewById(R.id.show_notification_button);
+        mShowNotificationButton = (Button) view.findViewById(R.id.change_color_button);
         mShowNotificationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mNotificationManager.notify(NOTIFICATION_ID, createNotification(
-                        mUseHeadsUpCheckbox.isChecked()));
-                Toast.makeText(getActivity(), "Show Notification clicked", Toast.LENGTH_SHORT).show();
+                HeadsUpNotificationFragment headsUpNotificationFragment = ((LNotificationActivity) getActivity()).getHeadsUpNotificationFragment();
+                //Bundle colorArgs = new Bundle();
+                //colorArgs.putInt("ButtonColor", Color.GREEN);
+                //headsUpNotificationFragment.setArguments(colorArgs);
+                headsUpNotificationFragment.getArguments().putInt("ButtonColor",Color.GREEN);
             }
         });
-        Bundle argsBundle = getArguments();
-        if(argsBundle!=null) {
-            int buttonColor = argsBundle.getInt("ButtonColor",Color.LTGRAY);
-            Button showNotificationButton = (Button) view.findViewById(R.id.show_notification_button);
-            showNotificationButton.setBackgroundColor(buttonColor);
-        }
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
     }
 
@@ -144,13 +144,4 @@ public class HeadsUpNotificationFragment extends Fragment {
         return notificationBuilder.build();
     }
 
-    public void updateButton()
-    {
-        Bundle argsBundle = getArguments();
-        if(argsBundle!=null) {
-            int buttonColor = argsBundle.getInt("ButtonColor", Color.LTGRAY);
-            Button showNotificationButton = (Button) getView().findViewById(R.id.show_notification_button);
-            showNotificationButton.setBackgroundColor(buttonColor);
-        }
-    }
 }
