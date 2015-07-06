@@ -101,10 +101,10 @@ public class ChangeColorFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 HeadsUpNotificationFragment headsUpNotificationFragment = ((LNotificationActivity) getActivity()).getHeadsUpNotificationFragment();
-                //Bundle colorArgs = new Bundle();
-                //colorArgs.putInt("ButtonColor", Color.GREEN);
-                //headsUpNotificationFragment.setArguments(colorArgs);
-                headsUpNotificationFragment.getArguments().putInt("ButtonColor",Color.GREEN);
+                Bundle colorArgs = new Bundle();
+                colorArgs.putInt("ButtonColor", Color.GREEN);
+                headsUpNotificationFragment.setArguments(colorArgs);
+                //headsUpNotificationFragment.getArguments().putInt("ButtonColor",Color.GREEN);
             }
         });
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);

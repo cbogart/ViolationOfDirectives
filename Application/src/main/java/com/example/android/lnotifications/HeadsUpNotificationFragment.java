@@ -143,14 +143,4 @@ public class HeadsUpNotificationFragment extends Fragment {
         }
         return notificationBuilder.build();
     }
-
-    public void updateButton()
-    {
-        Bundle argsBundle = getArguments();
-        if(argsBundle!=null) {
-            int buttonColor = argsBundle.getInt("ButtonColor", Color.LTGRAY);
-            Button showNotificationButton = (Button) getView().findViewById(R.id.show_notification_button);
-            showNotificationButton.setBackgroundColor(buttonColor);
-        }
-    }
 }

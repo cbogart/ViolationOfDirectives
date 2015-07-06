@@ -94,17 +94,12 @@ public class LNotificationActivity extends Activity {
                 System.out.println("adding fragment");
 
             } else {
-                //ft.attach(fragment);
-                //ft.replace(R.id.container,fragment);
                 System.out.println("attaching fragment");
                 if(fragment.getView()==null) {
                     ft.add(R.id.container, fragment, tag);
                 }
                 else {
                     ft.show(fragment);
-                    if(fragment instanceof HeadsUpNotificationFragment){
-                        ((HeadsUpNotificationFragment)fragment).updateButton();
-                    }
 
                 }
             }
@@ -112,8 +107,6 @@ public class LNotificationActivity extends Activity {
 
         @Override
         public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-            //ft.remove(fragment);
-            //ft.detach(fragment);
             ft.hide(fragment);
         }
     }
