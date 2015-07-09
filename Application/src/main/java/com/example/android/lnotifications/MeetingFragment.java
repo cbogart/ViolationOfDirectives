@@ -82,21 +82,15 @@ public class MeetingFragment extends Fragment{
             Bundle args = new Bundle();
             args.putCharSequence("description",displayedText);
             tsf.setArguments(args);
-            String tag;
-            if(i % 2 == 0){
-                tag = "TimeTag1";
-            }else{
-                tag = "TimeTag2";
-            }
-            ft.add(R.id.meeting_layout, tsf,tag);
+            ft.add(R.id.meeting_layout, tsf);
             ft.commit();
         }
         confirmMeetingButton = (Button) view.findViewById(R.id.meeting_button);
         confirmMeetingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view2) {
-                String meetingStartTime = ((Button)getFragmentManager().findFragmentByTag("TimeTag1").getView().findViewById(R.id.time_select_button)).getText().toString();
-                String meetingEndTime = ((Button)getFragmentManager().findFragmentByTag("TimeTag2").getView().findViewById(R.id.time_select_button)).getText().toString();
+                String meetingStartTime = "default value";
+                String meetingEndTime = "default value";
                 String displayString = "Meeting set from: "+meetingStartTime+" to "+meetingEndTime;
                 Toast.makeText(getActivity(), displayString, Toast.LENGTH_SHORT).show();
             }
