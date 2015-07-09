@@ -17,6 +17,8 @@ limitations under the License.
 
 <resources>
     <string name="action_settings">Settings</string>
+    <string name="meeting_description">This fragment allows a user to simulate adding a meeting
+    time into the system.\n</string>
     <string name="heads_up_notification_description">This sample demonstrates options for displaying Heads-Up Notifications on Android.
         \n\n
     On Android L or above, you have options to display important information in front of the user (Heads-Up Notifications) which
@@ -37,6 +39,7 @@ limitations under the License.
     <string name="attach_person">Attach Person</string>
     <string name="click_to_change">Click to Change</string>
     <string name="show_notification">Show notification</string>
+    <string name="meeting_button">Set meeting</string>
     <string name="use_heads_up_notification_where_possible">Use Heads Up Notification when possible</string>
     <string name="label_category">Category</string>
     <string name="label_priority">Priority</string>

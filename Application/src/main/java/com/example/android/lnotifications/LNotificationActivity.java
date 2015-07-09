@@ -21,11 +21,12 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 
 /**
  * Launcher Activity for the L Notification samples application.
  */
-public class LNotificationActivity extends Activity {
+public class LNotificationActivity extends FragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,18 +39,22 @@ public class LNotificationActivity extends Activity {
         // At this time, the support library for L is not ready so using the deprecated method
         // to create tabs.
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        ActionBar.Tab tabMeeting = actionBar.newTab().setText("Meeting");
         ActionBar.Tab tabHeadsUpNotification = actionBar.newTab().setText("Heads Up");
         ActionBar.Tab tabVisibilityMetadata = actionBar.newTab().setText("Visibility");
         ActionBar.Tab tabOtherMetadata = actionBar.newTab().setText("Others");
+        tabMeeting.setTabListener(new FragmentTabListener(MeetingFragment
+                .newInstance()));
         tabHeadsUpNotification.setTabListener(new FragmentTabListener(HeadsUpNotificationFragment
                 .newInstance()));
         tabVisibilityMetadata.setTabListener(new FragmentTabListener(VisibilityMetadataFragment
                 .newInstance()));
         tabOtherMetadata.setTabListener(new FragmentTabListener(OtherMetadataFragment.newInstance
                 ()));
-        actionBar.addTab(tabHeadsUpNotification, 0);
-        actionBar.addTab(tabVisibilityMetadata, 1);
-        actionBar.addTab(tabOtherMetadata, 2);
+        actionBar.addTab(tabMeeting, 0);
+        actionBar.addTab(tabHeadsUpNotification, 1);
+        actionBar.addTab(tabVisibilityMetadata, 2);
+        actionBar.addTab(tabOtherMetadata, 3);
     }
 
     /**
