@@ -90,7 +90,7 @@ public class MeetingFragment extends Fragment{
             @Override
             public void onClick(View view2) {
                 String meetingStartTime = "default value";
-                String meetingEndTime = "default value";
+                String meetingEndTime = "default value"; 
                 String displayString = "Meeting set from: "+meetingStartTime+" to "+meetingEndTime;
                 Toast.makeText(getActivity(), displayString, Toast.LENGTH_SHORT).show();
             }
