@@ -42,6 +42,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 /**
@@ -51,9 +52,9 @@ import java.util.Random;
 public class OtherMetadataFragment extends Fragment {
 
     /**
-     * The fragment's parent activity.
+     * The activity's start time.
      */
-    private Activity mActivity;
+    private GregorianCalendar mAppStartTime;
 
     private static final String TAG = OtherMetadataFragment.class.getSimpleName();
 
@@ -99,14 +100,14 @@ public class OtherMetadataFragment extends Fragment {
      *
      * @return A new instance of fragment NotificationFragment.
      */
-    public static OtherMetadataFragment newInstance(Activity act) {
-        OtherMetadataFragment fragment = new OtherMetadataFragment(act);
+    public static OtherMetadataFragment newInstance(GregorianCalendar appStartTime) {
+        OtherMetadataFragment fragment = new OtherMetadataFragment(appStartTime);
         fragment.setRetainInstance(true);
         return fragment;
     }
 
-    public OtherMetadataFragment(Activity act) {
-        mActivity = act;
+    public OtherMetadataFragment(GregorianCalendar appStartTime) {
+        mAppStartTime = appStartTime;
     }
 
     @Override
@@ -156,6 +157,7 @@ public class OtherMetadataFragment extends Fragment {
         });
 
         view.findViewById(R.id.contact_entry).setVisibility(View.GONE);
+        ((TextView)view.findViewById(R.id.start_time)).setText(mAppStartTime.getTime().toString());
     }
 
     @Override

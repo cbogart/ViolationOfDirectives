@@ -29,7 +29,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.GregorianCalendar;
 
 /**
  * Fragment that demonstrates options for displaying Heads-Up Notifications.
@@ -37,9 +40,9 @@ import android.widget.Toast;
 public class HeadsUpNotificationFragment extends Fragment {
 
     /**
-     * The fragment's parent activity.
+     * The object that stores when the activity started.
      */
-    private Activity mActivity;
+    private GregorianCalendar mAppStartTime;
 
     /**
      * NotificationId used for the notifications from this Fragment.
@@ -65,14 +68,14 @@ public class HeadsUpNotificationFragment extends Fragment {
      *
      * @return A new instance of fragment NotificationFragment.
      */
-    public static HeadsUpNotificationFragment newInstance(Activity act) {
-        HeadsUpNotificationFragment fragment = new HeadsUpNotificationFragment(act);
+    public static HeadsUpNotificationFragment newInstance(GregorianCalendar appStartTime) {
+        HeadsUpNotificationFragment fragment = new HeadsUpNotificationFragment(appStartTime);
         fragment.setRetainInstance(true);
         return fragment;
     }
 
-    public HeadsUpNotificationFragment(Activity act) {
-        mActivity = act;
+    public HeadsUpNotificationFragment(GregorianCalendar appStartTime) {
+        mAppStartTime = appStartTime;
     }
 
     @Override
@@ -102,6 +105,7 @@ public class HeadsUpNotificationFragment extends Fragment {
             }
         });
         mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
+        ((TextView)view.findViewById(R.id.start_time)).setText(mAppStartTime.getTime().toString());
     }
 
     /**

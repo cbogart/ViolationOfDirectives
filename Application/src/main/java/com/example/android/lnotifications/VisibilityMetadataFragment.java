@@ -27,8 +27,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.GregorianCalendar;
 import java.util.Random;
 
 
@@ -41,7 +43,7 @@ public class VisibilityMetadataFragment extends Fragment {
     /**
      * The fragment's parent activity.
      */
-    private Activity mActivity;
+    private GregorianCalendar mAppStartTime;
 
     private NotificationManager mNotificationManager;
 
@@ -67,14 +69,14 @@ public class VisibilityMetadataFragment extends Fragment {
      *
      * @return A new instance of fragment NotificationFragment.
      */
-    public static VisibilityMetadataFragment newInstance(Activity act) {
-        VisibilityMetadataFragment fragment = new VisibilityMetadataFragment(act);
+    public static VisibilityMetadataFragment newInstance(GregorianCalendar appStartTime) {
+        VisibilityMetadataFragment fragment = new VisibilityMetadataFragment(appStartTime);
         fragment.setRetainInstance(true);
         return fragment;
     }
 
-    public VisibilityMetadataFragment(Activity act) {
-        mActivity = act;
+    public VisibilityMetadataFragment(GregorianCalendar appStartTime){
+        mAppStartTime = appStartTime;
     }
 
     @Override
@@ -103,6 +105,7 @@ public class VisibilityMetadataFragment extends Fragment {
             }
         });
         mRadioGroup = (RadioGroup) view.findViewById(R.id.visibility_radio_group);
+        ((TextView)view.findViewById(R.id.start_time)).setText(mAppStartTime.getTime().toString());
     }
 
     /**

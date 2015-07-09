@@ -22,6 +22,8 @@ import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
 
+import java.util.GregorianCalendar;
+
 /**
  * Launcher Activity for the L Notification samples application.
  */
@@ -41,12 +43,13 @@ public class LNotificationActivity extends Activity {
         ActionBar.Tab tabHeadsUpNotification = actionBar.newTab().setText("Heads Up");
         ActionBar.Tab tabVisibilityMetadata = actionBar.newTab().setText("Visibility");
         ActionBar.Tab tabOtherMetadata = actionBar.newTab().setText("Others");
+        GregorianCalendar appStartTime = new GregorianCalendar();
         tabHeadsUpNotification.setTabListener(new FragmentTabListener(HeadsUpNotificationFragment
-                .newInstance(this)));
+                .newInstance(appStartTime)));
         tabVisibilityMetadata.setTabListener(new FragmentTabListener(VisibilityMetadataFragment
-                .newInstance(this)));
+                .newInstance(appStartTime)));
         tabOtherMetadata.setTabListener(new FragmentTabListener(OtherMetadataFragment.newInstance
-                (this)));
+                (appStartTime)));
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
