@@ -24,11 +24,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
+
+/***
+ * Problem - options menu for fragment is supposed to appear but doesn't.  Fix the error.
+ */
 
 /**
  * Fragment that demonstrates options for displaying Heads-Up Notifications.
@@ -130,5 +137,19 @@ public class HeadsUpNotificationFragment extends Fragment {
                     .setFullScreenIntent(fullScreenPendingIntent, true);
         }
         return notificationBuilder.build();
+    }
+
+    public void onCreateOptionsMenu(Menu menu,MenuInflater menuInflater)
+    {
+        super.onCreateOptionsMenu(menu,menuInflater);
+        menu.clear();
+        menuInflater.inflate(R.menu.sample_menu,menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item){
+        String clickedItem = item.getTitle().toString();
+        Toast.makeText(getActivity(), clickedItem, Toast.LENGTH_SHORT).show();
+        return true;
     }
 }
