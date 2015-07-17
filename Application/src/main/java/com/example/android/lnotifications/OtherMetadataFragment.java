@@ -44,6 +44,11 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.Random;
 
+/*
+ * Problem - this fragment is supposed to display a Toast of the name of the fragment
+ * which transitioned to it.  Currently it dies with a uncaught exception.  Fix the error!
+ */
+
 /**
  * Fragment that demonstrates how to attach metadata introduced in Android L, such as
  * priority data, notification category and person data.
@@ -151,6 +156,7 @@ public class OtherMetadataFragment extends Fragment {
         });
 
         view.findViewById(R.id.contact_entry).setVisibility(View.GONE);
+        displayActivityTitle();
     }
 
     @Override
@@ -341,5 +347,9 @@ public class OtherMetadataFragment extends Fragment {
         Priority(int value) {
             this.value = value;
         }
+    }
+
+    public void displayActivityTitle(){
+        Toast.makeText(getActivity(), "Activity Title:"+getActivity().getTitle(), Toast.LENGTH_SHORT).show();
     }
 }

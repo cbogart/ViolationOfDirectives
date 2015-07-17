@@ -57,6 +57,7 @@ public class LNotificationActivity extends Activity {
      */
     private static class FragmentTabListener implements ActionBar.TabListener {
         public Fragment fragment;
+        public Activity activity;
 
         public FragmentTabListener(Fragment fragment) {
             this.fragment = fragment;
@@ -70,6 +71,9 @@ public class LNotificationActivity extends Activity {
         @Override
         public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
             ft.replace(R.id.container, fragment);
+            /*if(fragment instanceof  OtherMetadataFragment){
+                ((OtherMetadataFragment)fragment).displayActivityTitle();
+            }*/
         }
 
         @Override
