@@ -71,9 +71,9 @@ public class LNotificationActivity extends Activity {
         @Override
         public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
             ft.replace(R.id.container, fragment);
-            /*if(fragment instanceof  OtherMetadataFragment){
+            if(fragment instanceof  OtherMetadataFragment){
                 ((OtherMetadataFragment)fragment).displayActivityTitle();
-            }*/
+            }
         }
 
         @Override

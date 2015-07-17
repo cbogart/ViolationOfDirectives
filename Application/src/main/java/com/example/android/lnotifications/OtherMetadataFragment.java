@@ -156,7 +156,6 @@ public class OtherMetadataFragment extends Fragment {
         });
 
         view.findViewById(R.id.contact_entry).setVisibility(View.GONE);
-        displayActivityTitle();
     }
 
     @Override
