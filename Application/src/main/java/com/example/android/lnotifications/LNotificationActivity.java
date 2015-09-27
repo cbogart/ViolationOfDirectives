@@ -85,7 +85,7 @@ public class LNotificationActivity extends Activity {
 
         @Override
         public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-            //ft.replace(R.id.container, fragment);
+            
             if (fragment == null) {
 
                 fragment = Fragment.instantiate(activity, fragment.getClass().getName());
