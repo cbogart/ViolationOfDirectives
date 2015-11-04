@@ -22,13 +22,14 @@ import android.widget.Toast;
 public class MeetingFragment extends Fragment{
 
 
+    private boolean initializeButtons = false;
+
     private NotificationManager mNotificationManager;
 
     /**
      * Button to confirm the meeting time
      */
     private Button confirmMeetingButton;
-
 
     /**
      * Use this factory method to create a new instance of
@@ -62,39 +63,44 @@ public class MeetingFragment extends Fragment{
 
     @Override
     public void onViewCreated(final View view, Bundle savedInstanceState) {
-        if(view==null){
-            Toast.makeText(getActivity(), "View is null", Toast.LENGTH_LONG).show();
-        }else{
-            Toast.makeText(getActivity(),"View is not null",Toast.LENGTH_LONG).show();
-        }
         super.onViewCreated(view, savedInstanceState);
-        int timeCount = 2;
-        for (int i = 0; i < timeCount; i++) {
-            FragmentTransaction ft = getFragmentManager().beginTransaction();
+        if(!initializeButtons) {
+            int timeCount = 2;
+            for (int i = 0; i < timeCount; i++) {
+                FragmentTransaction ft = getFragmentManager().beginTransaction();
 
-            String displayedText = "";
-            if(i % 2 == 0) {
-                displayedText =  "Start time:";
-            } else {
-                displayedText = "End time:";
+                String displayedText = "";
+                if (i % 2 == 0) {
+                    displayedText = "Start time:";
+                } else {
+                    displayedText = "End time:";
+                }
+                TimeSelectionFragment tsf = new TimeSelectionFragment();
+                Bundle args = new Bundle();
+                args.putCharSequence("description", displayedText);
+                tsf.setArguments(args);
+                ft.add(R.id.meeting_layout, tsf);
+                ft.commit();
             }
-            TimeSelectionFragment tsf = new TimeSelectionFragment();
-            Bundle args = new Bundle();
-            args.putCharSequence("description",displayedText);
-            tsf.setArguments(args);
-            ft.add(R.id.meeting_layout, tsf);
-            ft.commit();
+            initializeButtons = true;
         }
-        confirmMeetingButton = (Button) view.findViewById(R.id.meeting_button);
-        confirmMeetingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view2) {
-                String meetingStartTime = "default value";
-                String meetingEndTime = "default value"; 
-                String displayString = "Meeting set from: "+meetingStartTime+" to "+meetingEndTime;
-                Toast.makeText(getActivity(), displayString, Toast.LENGTH_SHORT).show();
-            }
-        });
+            confirmMeetingButton = (Button) view.findViewById(R.id.meeting_button);
+            confirmMeetingButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view2) {
+                    String meetingStartTime = "default value";
+                    String meetingEndTime = "default value";
+                    String displayString = "Meeting set from: " + meetingStartTime + " to " + meetingEndTime;
+                    Toast.makeText(getActivity(), displayString, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+    }
+
+    @Override
+    public void onDetach(){
+        initializeButtons = false;
+        super.onDetach();
     }
 
 }
