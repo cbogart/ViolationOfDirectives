@@ -139,6 +139,7 @@ public class HeadsUpNotificationFragment extends Fragment {
         return notificationBuilder.build();
     }
 
+    @Override
     public void onCreateOptionsMenu(Menu menu,MenuInflater menuInflater)
     {
         super.onCreateOptionsMenu(menu,menuInflater);
