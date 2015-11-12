@@ -23,9 +23,7 @@ import java.util.Calendar;
  * Created by root on 7/8/15.
  */
 public class TimeSelectionFragment extends  Fragment{
-
-    private int selectedHour = 0;
-    private int selectedMinute = 0;
+    
 
     private NotificationManager mNotificationManager;
 
