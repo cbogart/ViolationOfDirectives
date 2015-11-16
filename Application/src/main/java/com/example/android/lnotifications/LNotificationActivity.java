@@ -57,7 +57,6 @@ public class LNotificationActivity extends Activity {
      */
     private static class FragmentTabListener implements ActionBar.TabListener {
         public Fragment fragment;
-        public Activity activity;
 
         public FragmentTabListener(Fragment fragment) {
             this.fragment = fragment;
