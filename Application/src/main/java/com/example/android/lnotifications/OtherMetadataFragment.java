@@ -114,7 +114,6 @@ public class OtherMetadataFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        Log.d("DEBUG", "Other Created");
         View v = inflater.inflate(R.layout.fragment_other_metadata, container);
 
         return v;
