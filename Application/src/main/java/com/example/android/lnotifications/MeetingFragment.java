@@ -65,23 +65,8 @@ public class MeetingFragment extends Fragment{
     public void onViewCreated(final View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         if(!initializeButtons) {
-            int timeCount = 2;
-            for (int i = 0; i < timeCount; i++) {
-                FragmentTransaction ft = getFragmentManager().beginTransaction();
-
-                String displayedText = "";
-                if (i % 2 == 0) {
-                    displayedText = "Start time:";
-                } else {
-                    displayedText = "End time:";
-                }
-                TimeSelectionFragment tsf = new TimeSelectionFragment();
-                Bundle args = new Bundle();
-                args.putCharSequence("description", displayedText);
-                tsf.setArguments(args);
-                ft.add(R.id.meeting_layout, tsf);
-                ft.commit();
-            }
+            addButtonToLayout("Start time:");
+            addButtonToLayout("End time:");
             initializeButtons = true;
         }
             confirmMeetingButton = (Button) view.findViewById(R.id.meeting_button);
@@ -95,6 +80,16 @@ public class MeetingFragment extends Fragment{
                 }
             });
 
+    }
+
+    public void addButtonToLayout(String buttonText){
+        FragmentTransaction ft = getFragmentManager().beginTransaction();
+        TimeSelectionFragment tsf = new TimeSelectionFragment();
+        Bundle args = new Bundle();
+        args.putCharSequence("description", buttonText);
+        tsf.setArguments(args);
+        ft.add(R.id.meeting_layout, tsf);
+        ft.commit();
     }
 
     @Override
