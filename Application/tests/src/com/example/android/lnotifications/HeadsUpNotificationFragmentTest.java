@@ -49,24 +49,6 @@ public class HeadsUpNotificationFragmentTest extends
         assertNull(notification.fullScreenIntent);
     }
 
-    public void testMenuAddition(){
-
-        //select the correct menu button
-        Menu menu = mFragment.getMenu();
-        boolean foundTestItem = false;
-        assertTrue(menu!=null);
-        for(int i = 0; i < menu.size(); i++){
-            MenuItem mi = menu.getItem(i);
-            if(mi.getTitle().equals("Test Menu Action"))
-            {
-                foundTestItem = true;
-                break;
-            }
-        }
-        assertTrue(foundTestItem);
-
-    }
-
     // If Mockito can be used, mock the NotificationManager and tests Notifications are actually
     // created.
 }
