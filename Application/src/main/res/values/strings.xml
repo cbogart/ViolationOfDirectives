@@ -40,4 +40,6 @@ limitations under the License.
     <string name="use_heads_up_notification_where_possible">Use Heads Up Notification when possible</string>
     <string name="label_category">Category</string>
     <string name="label_priority">Priority</string>
+    <string name="planned_calls">List of planned calls</string>
+    <string name="new_call">Add a new call</string>
 </resources>

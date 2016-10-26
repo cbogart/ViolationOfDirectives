@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menuitem_search"
+        android:icon="@android:drawable/ic_menu_search"
+        android:showAsAction="ifRoom"
+        android:title="@string/planned_calls">
+    </item>
+    <item android:id="@+id/menuitem_send"
+        android:icon="@android:drawable/ic_menu_send"
+        android:showAsAction="ifRoom"
+        android:title="@string/new_call">
+    </item>
+</menu>
