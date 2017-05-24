@@ -23,6 +23,8 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -31,7 +33,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
-import android.view.ContextMenu;
 
 /**
  * Fragment that demonstrates options for displaying Heads-Up Notifications.
@@ -143,6 +144,13 @@ public class HeadsUpNotificationFragment extends Fragment {
         //D_FRG_047 - if onCreateContextMenu is overridden the method should inflate the menu
         //MenuInflater inflater = getActivity().getMenuInflater();
         //inflater.inflate(R.menu.context_menu, menu);
+        MenuInflater inflater = getActivity().getMenuInflater();
+        //inflater.inflate(R.menu.context_menu, menu);
+        //teseting to make sure that the menu was inflated
+        Log.d("test",String.valueOf(menu.size()));
+        if (menu.size() != 2){
+            Log.e("test result","the context menu was not set");
+        }
     }
 
 
