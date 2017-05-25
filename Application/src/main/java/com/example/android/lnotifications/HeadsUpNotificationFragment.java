@@ -142,15 +142,13 @@ public class HeadsUpNotificationFragment extends Fragment {
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
         //D_FRG_047 - if onCreateContextMenu is overridden the method should inflate the menu
+        System.out.print(menu.getClass().toString());
+        String menuClass = menu.getClass().toString();
+        Log.d("menu class",menuClass);
+        MenuInflater inflater = getActivity().getMenuInflater();
+        inflater.inflate(R.menu.context_menu, menu);
         //MenuInflater inflater = getActivity().getMenuInflater();
         //inflater.inflate(R.menu.context_menu, menu);
-        MenuInflater inflater = getActivity().getMenuInflater();
-        //inflater.inflate(R.menu.context_menu, menu);
-        //teseting to make sure that the menu was inflated
-        Log.d("test",String.valueOf(menu.size()));
-        if (menu.size() != 2){
-            Log.e("test result","the context menu was not set");
-        }
     }
 
 
