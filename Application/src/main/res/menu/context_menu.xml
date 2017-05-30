@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/context_menu">
-    <item android:id="@+id/create_new"
-                android:title="New" />
-    <item android:id="@+id/open"
-                android:title="Open" />
-</menu>
