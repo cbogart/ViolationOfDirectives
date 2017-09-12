@@ -81,5 +81,8 @@ public class TimeSelectionFragment extends  Fragment{
         ((Button)getView().findViewById(R.id.time_select_button)).setText(text);
     }
 
+    public String getButtonText(){
+        return (String)((Button)getView().findViewById(R.id.time_select_button)).getText();
+    }
 
 }

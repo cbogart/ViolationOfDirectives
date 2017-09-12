@@ -73,8 +73,10 @@ public class MeetingFragment extends Fragment{
             confirmMeetingButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view2) {
-                    String meetingStartTime = "default value";
-                    String meetingEndTime = "default value";
+                    TimeSelectionFragment startPicker = (TimeSelectionFragment) getFragmentManager().findFragmentByTag("Start time:");
+                    TimeSelectionFragment endPicker = (TimeSelectionFragment) getFragmentManager().findFragmentByTag("End time:");
+                    String meetingStartTime = startPicker.getButtonText();
+                    String meetingEndTime = endPicker.getButtonText();
                     String displayString = "Meeting set from: " + meetingStartTime + " to " + meetingEndTime;
                     Toast.makeText(getActivity(), displayString, Toast.LENGTH_SHORT).show();
                 }
@@ -88,7 +90,7 @@ public class MeetingFragment extends Fragment{
         Bundle args = new Bundle();
         args.putCharSequence("description", buttonText);
         tsf.setArguments(args);
-        ft.add(R.id.meeting_layout, tsf);
+        ft.add(R.id.meeting_layout, tsf, buttonText);
         ft.commit();
     }
 
