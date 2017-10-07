@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
 
 /**
  * Launcher Activity for the L Notification samples application.
@@ -70,9 +71,11 @@ public class LNotificationActivity extends Activity {
         @Override
         public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
             ft.replace(R.id.container, fragment);
-            if(fragment instanceof  OtherMetadataFragment){
-                ((OtherMetadataFragment)fragment).displayActivityTitle();
-            }
+            /*
+            if(fragment instanceof  OtherMetadataFragment) {
+                //((OtherMetadataFragment)fragment).displayActivityTitle();
+                Log.d("Test", "not important");
+            }*/
         }
 
         @Override

@@ -135,7 +135,12 @@ public class OtherMetadataFragment extends Fragment {
                 showNotificationClicked(selectedPriority, selectedCategory, mContactUri);
             }
         });
-
+        final Button showTitleButton = (Button)view.findViewById(R.id.show_title_button);
+        showTitleButton.setOnClickListener(new View.OnClickListener() {
+           public void onClick(View v) {
+               displayActivityTitle();
+           }
+        });
         mCategorySpinner = (Spinner) view.findViewById(R.id.category_spinner);
         ArrayAdapter<Category> categoryArrayAdapter = new ArrayAdapter<Category>(getActivity(),
                 android.R.layout.simple_spinner_item, Category.values());
