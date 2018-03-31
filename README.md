@@ -10,6 +10,7 @@
 
 
 **Steps to create ROS tasks**
+
 Task 1 (TR1): 
 Install code to have one turtlesim mimic another turtlesim as per: [http://wiki.ros.org/ROS/Tutorials/UsingRqtconsoleRoslaunch]
 In the mimic.cpp file (shown here: [http://docs.ros.org/diamondback/api/turtlesim/html/mimic_8cpp_source.html]) change line 38 to “ros::spinOnce();”, making the callback (defined on line 25) execute only once instead of continuously. 
@@ -22,6 +23,8 @@ mp3_controller_modified.cpp file, and give it a launch file as shown in attached
 Task 3 (TR3):
 Install code to have one turtlesim mimic another turtlesim as per: [http://wiki.ros.org/ROS/Tutorials/UsingRqtconsoleRoslaunch]
 In the turtle.cpp file (shown here: [http://docs.ros.org/hydro/api/turtlesim/html/turtle_8cpp_source.html]) modify the callback parameter on line 66 to read “const turtlesim::Velocity_::ConstPtr& vel”, thus using the old Velocity type instead of Twist
+
+
 ----------------------------------------------------------------------------------
 Original README from forked repo
 
