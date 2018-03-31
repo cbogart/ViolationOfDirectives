@@ -17,8 +17,8 @@ In the mimic.cpp file (shown here: [http://docs.ros.org/diamondback/api/turtlesi
 
 Task 2 (TR2):
 Install the mp3controller ros_service_examples as hosted here: [https://github.com/fairlight1337/ros_service_examples]
-In the mp3_controller.cpp file (shown here: [https://github.com/fairlight1337/ros_service_examples/blob/master/src/mp3_controller.cpp]), modify it to reflect the attached 
-mp3_controller_modified.cpp file, and give it a launch file as shown in attached media.launch, such that it instead retrieves the strDirectory parameter from the parameter server, but looks in the global namespace instead of in the local namespace, where it is (as shown in launch file).
+In the mp3_controller.cpp file (shown here: [https://github.com/fairlight1337/ros_service_examples/blob/master/src/mp3_controller.cpp]), modify it to reflect the
+mp3_controller_modified.cpp file in the main folder of the master branch, and give it a launch file as shown in attached media.launch in the same location, such that it instead retrieves the strDirectory parameter from the parameter server, but looks in the global namespace instead of in the local namespace, where it is (as shown in launch file).
 
 Task 3 (TR3):
 Install code to have one turtlesim mimic another turtlesim as per: [http://wiki.ros.org/ROS/Tutorials/UsingRqtconsoleRoslaunch]
