@@ -1,11 +1,17 @@
-Branches for different tasks
+**Branches for different tasks:**
 
 Android Task 1 (TA1): FAULT_031_SO_11495527
+
 Android Task 2 (TA2): FAULT_029_SO_27375363 
+
 Android Task 3 (TA3): FAULT_017_SO_29115050
+
 Android Task 4 (TA4): FAULT_013_SO_6215239
+
 Android Task 5 (TA5): FAULT_63_SO_19999172 
+
 Android Task 6 (TA6): FAULT_050_SO_25652512
+
 Android Task 7 (TA7): FAULT_012_SO_19597901 
 
 
