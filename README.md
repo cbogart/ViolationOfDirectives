@@ -1,5 +1,9 @@
 **Branches for different tasks:**
 
+There are commit for both the faulty code and a sample fix in these branches.
+You can look though the branch commit messages to find the version of 
+interest.
+
 - Android Task 1 (TA1): FAULT_031_SO_11495527
 - Android Task 2 (TA2): FAULT_029_SO_27375363 
 - Android Task 3 (TA3): FAULT_017_SO_29115050
