@@ -23,6 +23,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,6 +31,10 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
 //possible stack overflow reference: https://stackoverflow.com/questions/19353464/how-where-to-use-setinitialsavedstate-savefragmentinstancestate-inside-fragm
+//another possible reference: https://stackoverflow.com/questions/14040203/android-setinitialsavedstate
+
+//decided to base off of: https://stackoverflow.com/questions/19353464/how-where-to-use-setinitialsavedstate-savefragmentinstancestate-inside-fragm
+
 /**
  * Fragment that demonstrates options for displaying Heads-Up Notifications.
  */
@@ -52,6 +57,8 @@ public class HeadsUpNotificationFragment extends Fragment {
      * Notifications.
      */
     private CheckBox mUseHeadsUpCheckbox;
+
+    private Fragment.SavedState currentSavedState = null;
 
     /**
      * Use this factory method to create a new instance of
@@ -80,6 +87,16 @@ public class HeadsUpNotificationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        setInitialSavedState(currentSavedState);
+        //So the stackoverflow situation is closer to the case below than the case above - i.e.,
+        //setInitialSavedState was used in a way so that it would never execute, instead of it
+        //executing and causing the error. I'm currently leaving it in the causing the error state,
+        //since that is easier to check for
+        /*if(currentSavedState != null){
+            Log.i("problem info", "using saved state");
+            setInitialSavedState(currentSavedState);
+        }
+        */
         return inflater.inflate(R.layout.fragment_heads_up_notification, container, false);
     }
 
@@ -130,5 +147,12 @@ public class HeadsUpNotificationFragment extends Fragment {
                     .setFullScreenIntent(fullScreenPendingIntent, true);
         }
         return notificationBuilder.build();
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        currentSavedState = getFragmentManager().saveFragmentInstanceState(this);
+        Log.i("problem info", "saving the state");
     }
 }
