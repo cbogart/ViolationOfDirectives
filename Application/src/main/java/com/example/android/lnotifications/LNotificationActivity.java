@@ -29,6 +29,7 @@ public class LNotificationActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        enterPictureInPictureMode();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         setTitle(R.string.title_lnotification_activity);

@@ -29,7 +29,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.Toast;
-
+//possible stack overflow reference: https://stackoverflow.com/questions/19353464/how-where-to-use-setinitialsavedstate-savefragmentinstancestate-inside-fragm
 /**
  * Fragment that demonstrates options for displaying Heads-Up Notifications.
  */
