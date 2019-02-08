@@ -86,17 +86,6 @@ public class HeadsUpNotificationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        setInitialSavedState(currentSavedState);
-        //So the stackoverflow situation is closer to the case below than the case above - i.e.,
-        //setInitialSavedState was used in a way so that it would never execute, instead of it
-        //executing and causing the error. I'm currently leaving it in the causing the error state,
-        //since that is easier to check for
-        /*if(currentSavedState != null){
-            Log.i("problem info", "using saved state");
-            setInitialSavedState(currentSavedState);
-        }
-        */
         return inflater.inflate(R.layout.fragment_heads_up_notification, container, false);
     }
 
