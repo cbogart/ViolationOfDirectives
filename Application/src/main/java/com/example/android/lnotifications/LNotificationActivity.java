@@ -16,11 +16,20 @@
 
 package com.example.android.lnotifications;
 
+import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.util.Log;
+import android.widget.Toast;
+
+import static java.security.AccessController.getContext;
 
 /**
  * Launcher Activity for the L Notification samples application.
@@ -29,7 +38,6 @@ public class LNotificationActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        enterPictureInPictureMode();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notification);
         setTitle(R.string.title_lnotification_activity);
@@ -51,6 +59,24 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
+        Log.i("Test","about to request a permission");
+        if (this.getApplicationContext().checkSelfPermission(
+                Manifest.permission.SEND_SMS)
+                != PackageManager.PERMISSION_GRANTED) {
+           Log.i("permission info","application does not have permission");
+        } else{
+            Log.i("permission info", "application has the requested permission");
+        }
+        requestPermissions(new String[]{android.Manifest.permission.SEND_SMS}, 441);
+
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode,
+                                           String permissions[], int[] grantResults) {
+      Log.i("in Request Permission Result", "onRequestPermissionsResult successfully called");
+
     }
 
     /**
