@@ -5,6 +5,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 
+//problem taken from https://stackoverflow.com/questions/47723082/fragment-illegalstatexception-on-getresources
+
 public class BackgroundTestFragment extends Fragment {
     private class ResourcesTask extends AsyncTask{
 
