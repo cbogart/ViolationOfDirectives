@@ -50,6 +50,8 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
+        BackgroundTestFragment b  = new BackgroundTestFragment();
+        b.onCreate(null);
     }
 
     /**
