@@ -21,16 +21,29 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import android.widget.Toast;
+//import com.android.documentsui.*;
 
 /**
  * Launcher Activity for the L Notification samples application.
  */
 public class LNotificationActivity extends Activity {
+    private TextView tv;
+    //private FileOperations fileop;
+    private String[] file;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+        /*setContentView(R.layout.activity_notification);
         setTitle(R.string.title_lnotification_activity);
         ActionBar actionBar = getActionBar();
 
@@ -50,6 +63,32 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
+        */
+
+        //code below here taken from https://stackoverflow.com/questions/9280965/arrayadapter-requires-the-resource-id-to-be-a-textview-xml-problems
+        //this.fileop = new FileOperations();
+        //this.file = fileop.ReadFileAsList("Installed_packages.txt");
+        //setContentView(R.layout.failing_view);
+        //tv = (TextView) findViewById(R.id.TextView01);
+        ListView lv = new ListView(this);
+        lv.setTextFilterEnabled(true);
+        //lv.setAdapter(new ArrayAdapter<String>(this, R.layout.list_item, this.file));
+        ArrayAdapter<String> a = new ArrayAdapter<String>(this, R.layout.failing_view);
+        //ArrayAdapter<String> a = new ArrayAdapter<String>(this, R.layout.simple_text_view);
+        //ArrayAdapter<String> a = new ArrayAdapter<String>(this, R.id.TextView01);
+        lv.setAdapter(a);
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // When clicked, show a toast with the TextView text
+                Toast.makeText(getApplicationContext(), ((TextView) view).getText(), Toast.LENGTH_SHORT).show();
+            }
+        });
+        //setContentView(lv);
+        //a.add(lv);
+        a.add("Test string");
+        Log.d("debug info", "a count: "+a.getCount());
+        a.getView(0,null, lv);
     }
 
     /**
