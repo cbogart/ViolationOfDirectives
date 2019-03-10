@@ -21,16 +21,20 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 
 /**
  * Launcher Activity for the L Notification samples application.
+ *
+ * StackOverflow question: https://stackoverflow.com/questions/3264610/findviewbyid-returns-null?rq=1
  */
 public class LNotificationActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_notification);
+        /*setContentView(R.layout.activity_notification);
         setTitle(R.string.title_lnotification_activity);
         ActionBar actionBar = getActionBar();
 
@@ -49,7 +53,17 @@ public class LNotificationActivity extends Activity {
                 ()));
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
-        actionBar.addTab(tabOtherMetadata, 2);
+        actionBar.addTab(tabOtherMetadata, 2);*/
+
+        View result = findViewById(R.id.textview1);
+        setContentView(R.layout.activity_main);
+
+        if (result == null){
+            Log.d("tag info","the result is null");
+        } else {
+            Log.d("tag info", "the result is not null");
+        }
+
     }
 
     /**

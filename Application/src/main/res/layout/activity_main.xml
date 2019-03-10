@@ -31,6 +31,7 @@
             android:layout_marginRight="@dimen/horizontal_page_margin"
             android:layout_marginTop="@dimen/vertical_page_margin"
             android:layout_marginBottom="@dimen/vertical_page_margin"
-            android:text="@string/intro_message" />
+            android:text="@string/intro_message"
+            android:id="@+id/textview1"/>
     </LinearLayout>
 </LinearLayout>
