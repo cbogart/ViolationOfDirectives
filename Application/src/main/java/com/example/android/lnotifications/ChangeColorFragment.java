@@ -29,7 +29,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.Toast;
 
 /**
  * This fragment changes the color of the HeadsUpNotification Tab Button.  If the
@@ -46,18 +45,13 @@ public class ChangeColorFragment extends Fragment {
      */
     private static final int NOTIFICATION_ID = 1;
 
-    private NotificationManager mNotificationManager;
 
     /**
-     * Button to show a notification.
+     * Button to change the color of another button.
      */
-    private Button mShowNotificationButton;
+    private Button changeColorButton;
 
-    /**
-     * If checked, notifications that this Fragment creates will be displayed as Heads-Up
-     * Notifications.
-     */
-    private CheckBox mUseHeadsUpCheckbox;
+
 
     private int buttonColor = 0;
 
@@ -81,8 +75,6 @@ public class ChangeColorFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
-                .NOTIFICATION_SERVICE);
     }
 
     @Override
@@ -96,18 +88,16 @@ public class ChangeColorFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mShowNotificationButton = (Button) view.findViewById(R.id.change_color_button);
-        mShowNotificationButton.setOnClickListener(new View.OnClickListener() {
+        changeColorButton = (Button) view.findViewById(R.id.change_color_button);
+        changeColorButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 HeadsUpNotificationFragment headsUpNotificationFragment = ((LNotificationActivity) getActivity()).getHeadsUpNotificationFragment();
                 Bundle colorArgs = new Bundle();
                 colorArgs.putInt("ButtonColor", Color.GREEN);
                 headsUpNotificationFragment.setArguments(colorArgs);
-                //headsUpNotificationFragment.getArguments().putInt("ButtonColor",Color.GREEN);
             }
         });
-        mUseHeadsUpCheckbox = (CheckBox) view.findViewById(R.id.use_heads_up_checkbox);
     }
 
     /**

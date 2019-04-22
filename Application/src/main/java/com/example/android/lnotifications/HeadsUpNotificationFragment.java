@@ -67,9 +67,6 @@ public class HeadsUpNotificationFragment extends Fragment {
     }
 
     public HeadsUpNotificationFragment() {
-        //remove this later
-        //setArguments(new Bundle());
-        // Required empty public constructor
     }
 
     @Override
