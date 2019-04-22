@@ -1,7 +1,0 @@
-<launch>
-
-	<node pkg="ros_service_examples" type="mp3_inventory" name = "searcher" output = "screen">
-		<param name = "library_path" type "string" value = "$(env PWD)/src/roc_service_examples/albums"/>
-	</node>
-
-</launch>
