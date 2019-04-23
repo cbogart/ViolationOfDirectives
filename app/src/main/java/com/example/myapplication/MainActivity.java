@@ -16,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -33,7 +33,8 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent();
 
         i.setPackage("hello");
-        i.setSelector(new Intent());
+        //i.setSelector(new Intent());
+        setContentView(R.layout.activity_main);
         //i.setPackage(null);
         //i.setSelector(null);
 
