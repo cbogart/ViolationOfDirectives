@@ -58,7 +58,7 @@ public class HeadsUpNotificationFragment extends Fragment {
      */
     private CheckBox mUseHeadsUpCheckbox;
 
-    private Fragment.SavedState currentSavedState = null;
+    private static Fragment.SavedState currentSavedState = null;
 
     /**
      * Use this factory method to create a new instance of
