@@ -83,6 +83,7 @@ public class VisibilityMetadataFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_visibility_metadata_notification, container);
+onCreateView.findViewById(2131558528).setOnClickListener((View$OnClickListener)new View$OnClickListener() {
     }
 
     @Override
