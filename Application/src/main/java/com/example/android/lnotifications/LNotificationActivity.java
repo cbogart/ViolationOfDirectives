@@ -20,12 +20,18 @@ import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentTransaction;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+
+import junit.framework.Test;
 
 /**
  * Launcher Activity for the L Notification samples application.
  */
 public class LNotificationActivity extends Activity {
+
+    TestReceiver tr = new TestReceiver();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +56,18 @@ public class LNotificationActivity extends Activity {
         actionBar.addTab(tabHeadsUpNotification, 0);
         actionBar.addTab(tabVisibilityMetadata, 1);
         actionBar.addTab(tabOtherMetadata, 2);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        IntentFilter filter = new IntentFilter(Intent.ACTION_BATTERY_CHANGED);
+        this.registerReceiver(tr, filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
     }
 
     /**
