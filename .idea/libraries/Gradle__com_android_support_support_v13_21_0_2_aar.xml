@@ -1,11 +1,13 @@
 <component name="libraryTable">
   <library name="Gradle: com.android.support:support-v13:21.0.2@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d7b672459ce4798db899cfe468fada60/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d7b672459ce4798db899cfe468fada60/jars/libs/internal_impl-21.0.2.jar!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d7b672459ce4798db899cfe468fada60/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b5c4c2decc1f4f802813daf16244b40/support-v13-21.0.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b5c4c2decc1f4f802813daf16244b40/support-v13-21.0.2/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/5b5c4c2decc1f4f802813daf16244b40/support-v13-21.0.2/jars/libs/internal_impl-21.0.2.jar!/" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-v13/21.0.2/ae20fcf213756fdfc07e1dc3a9b3238ab815096b/support-v13-21.0.2-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.android.support/support-v13/21.0.2/1a16340426dd590eaaf229f00229a4301201d5f0/support-v13-21.0.2-sources.jar!/" />
     </SOURCES>
