@@ -53,9 +53,9 @@ public class LNotificationActivity extends Activity {
             theme = android.R.style.Theme_DeviceDefault_Light;
         }
         super.onCreate(savedInstanceState);
-        setTheme(theme);
-        setContentView(R.layout.activity_notification);
         //setTheme(theme);
+        setContentView(R.layout.activity_notification);
+        setTheme(theme);
         setTitle(R.string.title_lnotification_activity);
         ActionBar actionBar = getActionBar();
 
@@ -91,7 +91,7 @@ public class LNotificationActivity extends Activity {
         else if (choice == 1) {
             theme = android.R.style.Theme_DeviceDefault_Light;
         }
-        setTheme(theme);
+        //setTheme(theme);
     }
 
     /**
