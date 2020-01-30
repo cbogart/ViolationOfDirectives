@@ -29,7 +29,8 @@ public class BackgroundTestFragment extends Fragment {
         @Override
         protected void onPostExecute(String s) {
             Log.i("Background Info","in onPostExecute of ResourcesTask");
-            BackgroundTestFragment.this.getResources();
+            //BackgroundTestFragment.this.getResources();
+            getResources();
         }
     }
 
