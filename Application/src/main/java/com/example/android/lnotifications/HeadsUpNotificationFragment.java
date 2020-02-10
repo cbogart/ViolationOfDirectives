@@ -81,6 +81,7 @@ public class HeadsUpNotificationFragment extends Fragment {
         super.onCreate(savedInstanceState);
         mNotificationManager = (NotificationManager) getActivity().getSystemService(Context
                 .NOTIFICATION_SERVICE);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -139,13 +140,7 @@ public class HeadsUpNotificationFragment extends Fragment {
         return notificationBuilder.build();
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu,MenuInflater menuInflater)
-    {
-        super.onCreateOptionsMenu(menu,menuInflater);
-        menu.clear();
-        menuInflater.inflate(R.menu.sample_menu,menu);
-    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item){
